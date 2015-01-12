@@ -1,0 +1,46 @@
+<!doctype html>
+
+<html>
+<head>
+    <title>HitchHiking in DA</title>
+    <style>
+        .striped tr:nth-child(odd) {background: #def}
+        .centered {text-align: center}
+    </style>
+</head>
+<body style="font-family:Arial">
+    
+    <div style="text-align:center;width:1000px;margin:0px auto;">
+    <?php if (isset($error)) : ?>
+    <div style="background:pink;color:blue;"><?= $error ?></div>
+    <?php endif; ?>
+
+        <h1>Hello, HitchHiker!</h1>
+
+        <form action="./" method="post">
+            <div>Leave your name and time of departure from office</div><br/>
+            <label>Time: <input type="text" name="time" size="6" placeholder="18:10" class="centered"/></label>
+            &nbsp;&nbsp;&nbsp;
+            <label>Name: <input type="text" name="name" placeholder="John Doe" class="centered"/></label>
+            &nbsp;&nbsp;&nbsp;
+            <input type="submit" value="Add me!"/>
+        </form>
+        
+        <br/>
+        <hr style="color:#888;width:60%"/>
+        
+        <p>Current time: <?= $curTime ?></p>
+
+        <table class="striped" style="width:300px;margin:0px auto;">
+            <tr><th>Time</th><th>Name</th></tr>
+        <?php foreach ($data as $rec) : ?>
+            <tr>
+                <td><?= $rec->showTime ?></td>
+                <td><?= $rec->name ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </table>
+    </div>
+    
+</body>
+</html>
